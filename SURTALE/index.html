@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surtale - Danimarka'nın Sözlüğü</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="light-theme">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="surtale-icon.png" alt="Surtale Logo" class="logo-image">
+                </div>
+                <span>surtale</span>
+            </div>
+            <div class="notification-icon" id="notificationIcon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge" id="notificationBadge">3</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification Dropdown -->
+    <div class="notification-dropdown" id="notificationDropdown">
+        <div class="notification-header">
+        </div>
+        <div class="notification-list" id="notificationList">
+            <!-- Notifications will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Combined Stories and Popular Section -->
+    <section class="combined-section">
+        <div class="stories-container">
+            <div class="story-item confession-story" id="confessionStory1">
+                <div class="story-circle bedste-story">
+                    <img src="new-bedste-icon.png" alt="Bedste Icon" class="story-logo">
+                </div>
+                <span class="story-label">bedste indlæg</span>
+            </div>
+            
+            <div class="story-item confession-story" id="confessionStory2">
+                <div class="story-circle dark-story">
+                    <img src="new-tilstaelser-icon.png" alt="Tilstaelse Icon" class="story-logo">
+                </div>
+                <span class="story-label">bedste tilståelser</span>
+            </div>
+            
+            <div class="story-item dark-mode-story">
+                <div class="story-circle">
+                    <img src="https://via.placeholder.com/60x60/FF4444/FFFFFF?text=👤" alt="User">
+                </div>
+                <span class="story-label">tha2112</span>
+            </div>
+            
+            <div class="story-item">
+                <div class="story-circle">
+                    <img src="https://via.placeholder.com/60x60/FF6B6B/FFFFFF?text=👤" alt="User">
+                </div>
+                <span class="story-label">user214</span>
+            </div>
+        </div>
+
+    <!-- Navigation Tabs -->
+    <section class="nav-tabs">
+            <div class="tab active" data-tab="aktuel">
+                <span>aktuel</span>
+            <div class="filter-option" id="gundemFilter" style="display: none;">
+                <select>
+                    <option value="all">Tümü</option>
+                    <option value="trending">Trend</option>
+                    <option value="new">Yeni</option>
+                    <option value="popular">Popüler</option>
+                </select>
+            </div>
+        </div>
+                    <div class="tab" data-tab="folger">
+            <span>følger</span>
+            <div class="filter-option" id="takipFilter" style="display: none;">
+                <select>
+                    <option value="all">Tümü</option>
+                    <option value="friends">Arkadaşlar</option>
+                    <option value="following">Takip Edilenler</option>
+                    <option value="recent">Son Aktiviteler</option>
+                </select>
+            </div>
+        </div>
+            <div class="tab" data-tab="hashtags">
+                <span>#hastags</span>
+            <div class="filter-option" id="hashtagFilter" style="display: none;">
+                <select>
+                    <option value="all">Tümü</option>
+                    <option value="trending">Trend Hashtag'ler</option>
+                    <option value="popular">Popüler</option>
+                    <option value="new">Yeni</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+            <div class="section-header">
+                <h2>populært</h2>
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    Filtrer
+                </button>
+            </div>
+            
+            <div class="trending-list" id="trendingList">
+                <!-- Trending items will be loaded here -->
+            </div>
+        </section>
+
+    <!-- Messages Page -->
+    <div class="messages-page" id="messagesPage" style="display: none;">
+        <div class="messages-header">
+            <h1>beskeder</h1>
+            <button class="new-message-btn">+</button>
+        </div>
+        
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Søg i beskeder">
+        </div>
+        
+        <div class="messages-list">
+            <div class="message-item">
+                <div class="message-avatar profile-avatar red">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="username">user213123</span>
+                        <span class="timestamp">now</span>
+                    </div>
+                    <div class="message-preview">Lorem ipsum dolor sit amet...</div>
+                </div>
+            </div>
+            
+            <div class="message-item">
+                <div class="message-avatar profile-avatar blue">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="username">writer232</span>
+                        <span class="timestamp">15m</span>
+                    </div>
+                    <div class="message-preview">2 new messages</div>
+                </div>
+            </div>
+            
+            <div class="message-item">
+                <div class="message-avatar profile-avatar yellow">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="username">user213123</span>
+                        <span class="timestamp">1h</span>
+                    </div>
+                    <div class="message-preview">Lorem ipsum dolor sit amet</div>
+                </div>
+            </div>
+            
+            <div class="message-item">
+                <div class="message-avatar green">
+                    <img src="surtale-icon.png" alt="Surtale" style="width: 30px; height: 30px;">
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="username">Surtale</span>
+                        <span class="timestamp">1h</span>
+                    </div>
+                    <div class="message-preview">Velkommen til Surtale! Start...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Page -->
+    <div class="notifications-page" id="notificationsPage" style="display: none;">
+        <div class="notifications-header">
+            <h1>notifikation</h1>
+        </div>
+        
+        <div class="notifications-list">
+            <div class="notification-item">
+                <div class="notification-avatars">
+                    <div class="avatar profile-avatar green">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="avatar profile-avatar orange">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-text">venneanmodninger</div>
+                    <div class="notification-detail">armankk +3</div>
+                </div>
+                <div class="notification-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="notification-item">
+                <div class="notification-avatar profile-avatar purple">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-text">writer232 fulgte dig</div>
+                    <div class="notification-detail">now</div>
+                </div>
+                <button class="follow-back-btn">følge tilbage</button>
+            </div>
+            
+            <div class="notification-item">
+                <div class="notification-avatar profile-avatar red">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-text">mehmet har tilføjet et nyt indlæg til dit indlæg</div>
+                    <div class="notification-detail">30m</div>
+                </div>
+                <div class="notification-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div class="profile-page" id="profilePage" style="display: none;">
+        <div class="profile-header">
+            <div class="profile-header-top">
+                <div class="profile-settings">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+            
+            <div class="profile-info">
+                <div class="profile-details">
+                    <h1 class="profile-name">arm31</h1>
+                    <div class="profile-status">nybegynder</div>
+                    <div class="profile-message">
+                        du er ikke i godkendelsesprocessen endnu, da du ikke har fuldført 10 entries. 
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="profile-stats">
+                        <span>0 entry</span>
+                        <span class="dot">•</span>
+                        <span>0 følgere</span>
+                        <span class="dot">•</span>
+                        <span>0 følger</span>
+                    </div>
+                    <div class="profile-join-date">
+                        <i class="fas fa-calendar"></i>
+                        <span>august 2025</span>
+                    </div>
+                </div>
+                
+                <div class="profile-avatar">
+                    <div class="profile-avatar-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-more">
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+        </div>
+        
+        <div class="profile-tabs">
+            <div class="profile-tab active" data-tab="entries">entries</div>
+            <div class="profile-tab" data-tab="favorites">favoritter</div>
+            <div class="profile-tab" data-tab="stats">statistikker</div>
+        </div>
+        
+        <div class="profile-content">
+            <div class="profile-entry">
+                <div class="entry-text">at eje flere huse skal forbydes</div>
+                <div class="entry-comment">præcis</div>
+                <div class="entry-actions">
+                    <div class="entry-reactions">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="entry-share">
+                        <i class="fas fa-share-square"></i>
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div>
+                <div class="entry-author">
+                    <span class="author-name">arm31</span>
+                    <span class="entry-date">05.09.2025 21:33</span>
+                    <div class="author-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Page -->
+    <div class="search-page" id="searchPage" style="display: none;">
+        <div class="search-header">
+            <div class="search-logo">
+                <img src="surtale-icon.png" alt="Surtale" class="search-logo-img">
+                <span class="search-logo-text">surtale</span>
+            </div>
+            <div class="search-header-right">
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-input-container">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="titel, #entry eller @forfatter" id="searchInput">
+                </div>
+            </div>
+            
+            <div class="perfect-search">
+                <i class="fas fa-search"></i>
+                <span>perfekt søgning</span>
+            </div>
+            
+            
+            <div class="search-results" id="searchResults" style="display: none;">
+                <!-- Search results will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edste Indlæg Page (Seneste Kompliment) -->
+    <div class="edste-overlay" id="edsteOverlay" style="display: none;">
+        <!-- Page 1 -->
+        <div class="edste-page" id="edstePage1">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">1/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn1">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">seneste kompliment</div>
+                    
+                    <div class="edste-text">
+                        da du underviser ler øjnene.<br>
+                        vi har hele dagen godt efter<br>
+                        din undervisning...", sagde en elev.<br>
+                        at høre denne sætning fik mig til<br>
+                        at glemme alt det hårde.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">15</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">09-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">user</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="edste-page" id="edstePage2" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn2">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">2/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn2">‹</button>
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn2">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">mest inspirerende øjeblik</div>
+                    
+                    <div class="edste-text">
+                        når jeg ser dig smile, glemmer jeg<br>
+                        alt det dårlige i verden. dit smil<br>
+                        er som solen på en grå dag og<br>
+                        giver mig håb om at alt bliver godt.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">23</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">08-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">københavn</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="edste-page" id="edstePage3" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn3">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">3/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn3">‹</button>
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn3">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">bedste råd jeg har fået</div>
+                    
+                    <div class="edste-text">
+                        vær dig selv, alle andre er allerede<br>
+                        taget. dit unikke perspektiv er det<br>
+                        der gør dig speciel. tro på dig selv<br>
+                        og dine evner, for du er mere<br>
+                        kapabel end du tror.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">31</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">07-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">aarhus</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="edste-page" id="edstePage4" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn4">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">4/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn4">‹</button>
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn4">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">mest berørende historie</div>
+                    
+                    <div class="edste-text">
+                        min bedstemor sagde altid: 'kærlighed<br>
+                        er det eneste der virkelig betyder noget<br>
+                        i livet.' nu forstår jeg hvorfor. hendes<br>
+                        ord har hjulpet mig gennem de<br>
+                        sværeste tider.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">42</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">06-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">odense</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="edste-page" id="edstePage5" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn5">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">5/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn5">‹</button>
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn5">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">mest motiverende citat</div>
+                    
+                    <div class="edste-text">
+                        succes er ikke nøglen til lykke.<br>
+                        lykke er nøglen til succes. hvis du<br>
+                        elsker det du laver, vil du være<br>
+                        succesfuld. følg dit hjerte og<br>
+                        gør hvad der gør dig glad.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">18</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">05-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">aalborg</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 6 -->
+        <div class="edste-page" id="edstePage6" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn6">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">6/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn6">‹</button>
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn6">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">mest lærerige oplevelse</div>
+                    
+                    <div class="edste-text">
+                        fejl er ikke modsætningen til succes,<br>
+                        de er en del af den. hver fejl lærer<br>
+                        os noget nyt og gør os stærkere.<br>
+                        vær ikke bange for at fejle,<br>
+                        vær bange for ikke at prøve.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">27</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">04-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">esbjerg</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 7 -->
+        <div class="edste-page" id="edstePage7" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn7">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">7/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn7">‹</button>
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn7">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">mest mindeværdige øjeblik</div>
+                    
+                    <div class="edste-text">
+                        når jeg tænker tilbage på mit liv,<br>
+                        er det ikke de store sejre jeg husker<br>
+                        mest. det er de små øjeblikke med<br>
+                        dem jeg elsker, der gør mig glad<br>
+                        og taknemmelig.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">35</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">03-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">randers</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 8 -->
+        <div class="edste-page" id="edstePage8" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn8">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">8/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn8">‹</button>
+            <button class="edste-side-nav edste-side-next" id="edsteNextBtn8">›</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">mest inspirerende livsvisdom</div>
+                    
+                    <div class="edste-text">
+                        livet er ikke om at vente på at<br>
+                        stormen passerer, det er om at<br>
+                        lære at danse i regnen. hver dag<br>
+                        er en gave, og vi skal være<br>
+                        taknemmelige for det vi har.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">29</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">02-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">kolding</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+
+        <!-- Page 9 -->
+        <div class="edste-page" id="edstePage9" style="display: none;">
+            <div class="edste-header">
+                <button class="edste-back-btn" id="edsteBackBtn9">←</button>
+                <div class="edste-logo">
+                    <img src="surtale-story-icon.png" alt="Surtale" class="edste-logo-img">
+                    <span class="edste-logo-text">surtale</span>
+                </div>
+                <div class="edste-page-number">9/9</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="edste-side-nav edste-side-prev" id="edstePrevBtn9">‹</button>
+            
+            <div class="edste-content">
+                <div class="edste-card">
+                    <div class="edste-title">mest berørende taknemmelighed</div>
+                    
+                    <div class="edste-text">
+                        tak for at du altid har været der<br>
+                        når jeg havde brug for dig. din<br>
+                        støtte betyder mere end du nogensinde<br>
+                        vil vide. du har gjort mig til en<br>
+                        bedre person.
+                    </div>
+                    
+                    <div class="edste-interactions">
+                        <div class="edste-votes">
+                            <button class="vote-up">↑</button>
+                            <span class="vote-count">38</span>
+                            <button class="vote-down">↓</button>
+                        </div>
+                        <div class="edste-date">01-09-2025</div>
+                    </div>
+                    
+                    <div class="edste-user">
+                        <img src="surtale-story-icon.png" alt="User" class="edste-user-icon">
+                        <span class="edste-username">dubrovnick</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edste-footer">
+                <div class="edste-scroll-hint">
+                    <div class="scroll-arrows">↑↑</div>
+                    <span class="scroll-text">Stryg op</span>
+                </div>
+            </div>
+            
+            <!-- Decorative background icons -->
+            <div class="edste-bg-icon icon-1"></div>
+            <div class="edste-bg-icon icon-2"></div>
+            <div class="edste-bg-icon icon-3"></div>
+            <div class="edste-bg-icon icon-4"></div>
+            <div class="edste-bg-icon icon-5"></div>
+            <div class="edste-bg-icon icon-6"></div>
+            <div class="edste-bg-icon icon-7"></div>
+            <div class="edste-bg-icon icon-8"></div>
+        </div>
+    </div>
+
+    <!-- Bedste Indlæg Pages -->
+    <div class="bedste-overlay" id="bedsteOverlay" style="display: none;">
+        <!-- Page 1 -->
+        <div class="bedste-page" id="bedstePage1">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">1/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn1" style="display: none;">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn1">›</button>
+            
+            <div class="bedste-title">seneste kompliment</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "da du underviser ler øjnene.<br>
+                    vi har hele dagen godt efter<br>
+                    din undervisning...", sagde en elev.<br>
+                    at høre denne sætning fik mig til<br>
+                    at glemme alt det hårde.
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">dubrovnick</span>
+                </div>
+            </div>
+            
+            <!-- Decorative Surtale Icons -->
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="bedste-page" id="bedstePage2" style="display: none;">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn2">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">2/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn2">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn2">›</button>
+            
+            <div class="bedste-title">mest inspirerende øjeblik</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "når jeg ser dig smile, glemmer jeg<br>
+                    alt det dårlige i verden. dit smil<br>
+                    er som solen på en grå dag og<br>
+                    giver mig håb om at alt bliver godt."
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">københavn</span>
+                </div>
+            </div>
+            
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="bedste-page" id="bedstePage3" style="display: none;">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn3">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">3/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn3">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn3">›</button>
+            
+            <div class="bedste-title">bedste råd jeg har fået</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "vær dig selv, alle andre er allerede<br>
+                    taget. dit unikke perspektiv er det<br>
+                    der gør dig speciel. tro på dig selv<br>
+                    og dine evner, for du er mere<br>
+                    kapabel end du tror."
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">aarhus</span>
+                </div>
+            </div>
+            
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="bedste-page" id="bedstePage4" style="display: none;">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn4">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">4/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn4">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn4">›</button>
+            
+            <div class="bedste-title">mest berørende historie</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "min bedstemor sagde altid: 'kærlighed<br>
+                    er det eneste der virkelig betyder noget<br>
+                    i livet.' nu forstår jeg hvorfor. hendes<br>
+                    ord har hjulpet mig gennem de<br>
+                    sværeste tider."
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">odense</span>
+                </div>
+            </div>
+            
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="bedste-page" id="bedstePage5" style="display: none;">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn5">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">5/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn5">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn5">›</button>
+            
+            <div class="bedste-title">mest motiverende citat</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "succes er ikke nøglen til lykke.<br>
+                    lykke er nøglen til succes. hvis du<br>
+                    elsker det du laver, vil du være<br>
+                    succesfuld. følg dit hjerte og<br>
+                    gør hvad der gør dig glad."
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">aalborg</span>
+                </div>
+            </div>
+            
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+
+        <!-- Page 6 -->
+        <div class="bedste-page" id="bedstePage6" style="display: none;">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn6">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">6/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn6">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn6">›</button>
+            
+            <div class="bedste-title">mest lærerige oplevelse</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "fejl er ikke modsætningen til succes,<br>
+                    de er en del af den. hver fejl lærer<br>
+                    os noget nyt og gør os stærkere.<br>
+                    vær ikke bange for at fejle,<br>
+                    vær bange for ikke at prøve."
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">esbjerg</span>
+                </div>
+            </div>
+            
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+
+        <!-- Page 7 -->
+        <div class="bedste-page" id="bedstePage7" style="display: none;">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn7">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">7/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn7">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn7">›</button>
+            
+            <div class="bedste-title">mest mindeværdige øjeblik</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "når jeg tænker tilbage på mit liv,<br>
+                    er det ikke de store sejre jeg husker<br>
+                    mest. det er de små øjeblikke med<br>
+                    dem jeg elsker, der gør mig glad<br>
+                    og taknemmelig."
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">randers</span>
+                </div>
+            </div>
+            
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+
+        <!-- Page 8 -->
+        <div class="bedste-page" id="bedstePage8" style="display: none;">
+            <div class="bedste-header">
+                <button class="bedste-back-btn" id="bedsteBackBtn8">←</button>
+                <div class="bedste-logo">
+                    <img src="surtale-icon.png" alt="Surtale" class="bedste-logo-img">
+                    <span class="bedste-logo-text">surtale</span>
+                </div>
+                <div class="bedste-page-number">8/8</div>
+            </div>
+            
+            <!-- Side Navigation Buttons -->
+            <button class="bedste-side-nav bedste-side-prev" id="bedstePrevBtn8">‹</button>
+            <button class="bedste-side-nav bedste-side-next" id="bedsteNextBtn8" style="display: none;">›</button>
+            
+            <div class="bedste-title">mest inspirerende livsvisdom</div>
+            
+            <div class="bedste-content">
+                <div class="bedste-quote">
+                    "livet er ikke om at vente på at<br>
+                    stormen passerer, det er om at<br>
+                    lære at danse i regnen. hver dag<br>
+                    er en gave, og vi skal være<br>
+                    taknemmelige for det vi har."
+                    <div class="quote-background-icon">
+                        <img src="surtale-icon.png" alt="Surtale Background" class="quote-surtale-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bedste-footer">
+                <div class="bedste-decorative">
+                    <div class="decorative-circle"></div>
+                </div>
+                <div class="bedste-author">
+                    <div class="bedste-icon">⛑️</div>
+                    <span class="bedste-author-text">kolding</span>
+                </div>
+            </div>
+            
+            <div class="surtale-decorative icon-1"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-2"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-3"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-4"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-5"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-6"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-7"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+            <div class="surtale-decorative icon-8"><img src="surtale-icon.png" alt="Surtale" class="decorative-surtale-icon"></div>
+        </div>
+    </div>
+
+    <!-- Map Page -->
+    <div class="map-page" id="mapPage" style="display: none;">
+        <div class="map-header">
+            <div class="map-logo">
+                <img src="dark-mode-icon.png" alt="Surtale" class="map-logo-img">
+                <span class="map-logo-text">surtale</span>
+            </div>
+            <div class="map-header-right">
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    Filtrer
+                </button>
+            </div>
+        </div>
+        
+        <div class="map-title">kort</div>
+        
+        <div class="map-container">
+            <div id="leaflet-map"></div>
+        </div>
+        
+        <div class="nearest-section">
+            <h3 class="nearest-title">nærmeste</h3>
+            <div class="nearest-item">
+                <div class="nearest-content">
+                    <div class="nearest-text">den industrielle eevolution og dens asgdghasdadsds</div>
+                    <div class="nearest-author">Anon#432</div>
+                </div>
+                <div class="nearest-count">342</div>
+            </div>
+            <div class="nearest-item">
+                <div class="nearest-content">
+                    <div class="nearest-text">hvad sker der i københavn i dag?</div>
+                    <div class="nearest-author">Anon#156</div>
+                </div>
+                <div class="nearest-count">128</div>
+            </div>
+            <div class="nearest-item">
+                <div class="nearest-content">
+                    <div class="nearest-text">nogen der ved hvor man kan få god pizza?</div>
+                    <div class="nearest-author">Anon#789</div>
+                </div>
+                <div class="nearest-count">89</div>
+            </div>
+        </div>
+        
+        <div class="map-fab">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+
+    <!-- Dark Mode Popup -->
+    <div class="dark-mode-overlay" id="darkModeOverlay" style="display: none;">
+        <div class="dark-mode-popup">
+            <div class="dark-mode-icon">
+                <img src="dark-mode-icon.png" alt="Surtale" style="width: 140px; height: 120px;">
+            </div>
+            <div class="dark-mode-text">
+                Lige nu er du i det<br>
+                mørke rum – sig det,<br>
+                du vil, tilstå det, læs<br>
+                andres tilståelser, og<br>
+                måske finder du<br>
+                endda dig selv her.
+            </div>
+            <button class="dark-mode-continue-btn" id="darkModeContinueBtn">fortsætte</button>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="fabButton">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" data-page="home">
+            <img src="new-home-icon.png" alt="Ana Sayfa" class="nav-icon">
+        </div>
+        <div class="nav-item" data-page="search">
+            <img src="search-icon.png" alt="Arama" class="nav-icon">
+        </div>
+        <div class="nav-item" data-page="surtale-nav">
+            <img src="surtale-nav-icon.png" alt="Surtale Nav" class="nav-icon">
+        </div>
+        <div class="nav-item" data-page="messages">
+            <img src="messages-icon.png" alt="Mesajlar" class="nav-icon">
+        </div>
+        <div class="nav-item" data-page="profile">
+            <img src="profile-icon.png" alt="Profil" class="nav-icon">
+        </div>
+    </nav>
+
+    <!-- Confession Modal -->
+    <div class="modal" id="confessionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Anonym Bekendelse</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="confessionForm">
+                <textarea placeholder="Skriv din bekendelse her..." id="confessionText" required></textarea>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel">Annuller</button>
+                    <button type="submit" class="btn-submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
